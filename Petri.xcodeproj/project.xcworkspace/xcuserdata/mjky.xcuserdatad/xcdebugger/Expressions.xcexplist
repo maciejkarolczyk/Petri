@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Cell.increaseSatiation():Cell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "satiation">
+            </PersistentString>
+            <PersistentString
+               value = "satiationMax">
+            </PersistentString>
+            <PersistentString
+               value = "eatingSpeed">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.didBegin(_:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "bodyTwo.categoryBitMask &amp; PhysicsCategory.food != 0">
+            </PersistentString>
+            <PersistentString
+               value = "bodyOne.categoryBitMask &amp; PhysicsCategory.cell != 0">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.contactCellWithCell(_:_:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cellOne.type">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.cellMovementRecursive(cellModel:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cellModel.type">
+            </PersistentString>
+            <PersistentString
+               value = "cellModel.satiation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.pinchGestureAction(_:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "previousCameraScale">
+            </PersistentString>
+            <PersistentString
+               value = "sender.scale">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.cellMovementRecursive(_:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.hasHighSatiation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.fillCellArray():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cellsArray">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.recursive():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cellSprites">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.addFood(type:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "foodCloud.position">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

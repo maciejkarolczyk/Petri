@@ -10,44 +10,47 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var gameView: SKView!
+    @IBOutlet weak var hudView: SKView!
+    
+    @IBOutlet weak var SlideButton: SlideViewButton!
+    @IBOutlet weak var hudConstraintZero: NSLayoutConstraint!
+    @IBOutlet weak var hudConstraintMax: NSLayoutConstraint!
+    
+    var detailsScene:DetailsScene?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
-            
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
-                
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
-            }
+//        cellDetailsView.delegate = self
+        if let gameSceneView = gameView {
+            let scene = GameScene(size: view.bounds.size)
+            scene.gameSceneDelegate = self
+            gameSceneView.showsFPS = true
+            gameSceneView.showsNodeCount = true
+            gameSceneView.ignoresSiblingOrder = true
+            scene.scaleMode = .resizeFill
+            gameSceneView.presentScene(scene)
         }
+        
+        detailsScene = DetailsScene(fileNamed:"DetailsScene")
+        if let scene = detailsScene, let skView = hudView {
+            skView.allowsTransparency = true
+            scene.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.01)
+            skView.presentScene(scene)
+        }
+        
     }
-
+    
     override var shouldAutorotate: Bool {
         return true
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+            return .landscape
         } else {
             return .all
         }
@@ -55,5 +58,19 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+extension GameViewController : GameSceneDelegate {
+    func didSelectCell(_ cell: Cell) {
+        guard let detailsScene = detailsScene else {return}
+        detailsScene.setupWithCellData(cell)
+    }
+    
+    func didSendCellUpdate(_ cell: Cell) {
+        if !cell.isDead {
+            guard let detailsScene = detailsScene else {return}
+            detailsScene.updateCellStatistics(cell)
+        }
     }
 }
